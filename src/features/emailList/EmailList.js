@@ -18,6 +18,14 @@ const EmailListItemWrapper = styled.div`
     align-items: center;
 `;
 
+function Tag(props) {
+    return (
+        <div style={{ marginRight: '5px', padding: '2px 5px', background: 'gray', borderRadius: '10px', fontSize: '12px' }}>
+            {props.tag}
+        </div>
+    )
+}
+
 function EmailListItem({ email }) {
     const dispatch = useDispatch();
     const date = new Date(email.date);
@@ -51,8 +59,8 @@ function EmailListItem({ email }) {
             <div style={{ width: '168px', paddingRight: '32px' }}>
                 {email.sender}
             </div>
-            <div style={{ flex: '1 1 auto', paddingRight: '10px', textAlign: 'left' }}>
-                {email.subject}
+            <div style={{ flex: '1 1 auto', paddingRight: '10px', textAlign: 'left', display: 'flex' }}>
+                {email.tags.map(tag => <Tag tag={tag} />)} {email.subject}
             </div>
             <div style={{ flexBasis: '56px', paddingRight: '16px' }}>
                 {dateStr}
