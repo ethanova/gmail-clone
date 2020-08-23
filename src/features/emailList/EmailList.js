@@ -14,9 +14,15 @@ import {
 const EmailListItemWrapper = styled.div`
     display: flex;
     height: 20px;
-    padding: 4px 0;
+    padding: 5px 0;
     align-items: center;
     font-weight: ${props => props.read ? 'normal' : 'bold'};
+    background: ${props => props.selected ? '#c2dbff' : '' };
+    border-bottom: 1px solid gray;
+
+    :hover {
+        box-shadow: 0 2px 4px grey;
+    }
 `;
 
 function Tag(props) {
@@ -43,7 +49,7 @@ function EmailListItem({ email }) {
 
     //TODO: change to styled components
     return (
-        <EmailListItemWrapper read={email.read}>
+        <EmailListItemWrapper read={email.read} selected={email.selected}>
             <div style={{ width: '20px', height: '20px', padding: '0 10px 0 14px', display: 'flex', alignItems: 'center' }}>
                 <Checkbox
                     checked={email.selected}

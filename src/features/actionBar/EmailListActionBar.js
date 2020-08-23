@@ -46,8 +46,8 @@ function DefaultActions() {
     return (
         <>
             <CheckBoxButton />
-            <RefreshIcon />
-            <MoreVertIcon />
+            <RefreshIcon style={{ color: 'grey' }} />
+            <MoreVertIcon style={{ color: 'grey' }} />
         </>
     );
 }
@@ -63,18 +63,18 @@ function EmailActions() {
         <>
             <CheckBoxButton />
             <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <ArchiveIcon />
-                <ReportIcon />
-                <DeleteIcon />
+                <ArchiveIcon style={{ color: 'grey' }} />
+                <ReportIcon style={{ color: 'grey' }} />
+                <DeleteIcon style={{ color: 'grey' }} />
             </div>
             <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <button onClick={handleReadStatusBtnClick}><DraftsIcon /></button>
-                <WatchLaterIcon />
-                <PlaylistAddCheckIcon />
+                <button onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
+                <WatchLaterIcon style={{ color: 'grey' }} />
+                <PlaylistAddCheckIcon style={{ color: 'grey' }} />
             </div>
-            <FolderIcon />
-            <button onClick={promptUserForLabel}><LabelIcon /></button>
-            <MoreVertIcon />
+            <FolderIcon style={{ color: 'grey' }} />
+            <button onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
+            <MoreVertIcon style={{ color: 'grey' }} />
         </>
     )
 }
