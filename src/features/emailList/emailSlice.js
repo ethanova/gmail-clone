@@ -1,15 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 import emails from '../../emails';
 
-const processedEmailInput = emails.map(email => ({
+const processedEmailInput = {};
+emails.forEach(email => {
+  processedEmailInput[email.id] = {
     ...email,
     selected: false
-}));
+  };
+});
 
 export const emailSlice = createSlice({
   name: 'emails',
   initialState: processedEmailInput,
   reducers: {
+    select: (state, action) => {
+      state[action.payload.emailId].selected = true;
+    },
+    deselect: (state, action) => {
+      state[action.payload.emailId].selected = false;
+    },
     // increment: state => {
     //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
     //   // doesn't actually mutate the state because it uses the Immer library,
@@ -26,18 +35,8 @@ export const emailSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = emailSlice.actions;
+export const { select, deselect } = emailSlice.actions;
 
-// The function below is called a thunk and allows us to perform async logic. It
-// can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
-// will call the thunk with the `dispatch` function as the first argument. Async
-// code can then be executed and other actions can be dispatched
-export const incrementAsync = amount => dispatch => {
-  setTimeout(() => {
-    dispatch(incrementByAmount(amount));
-  }, 1000);
-};
-
-export const getEmails = state => state.emails;
+export const getEmails = state => Object.keys(state.emails).map(emailId => state.emails[emailId]);
 
 export default emailSlice.reducer;

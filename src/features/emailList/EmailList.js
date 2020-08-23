@@ -5,7 +5,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {
   getEmails,
+  select,
+  deselect
 } from './emailSlice';
+//TODO: cleanup imports
 // import styles from './Counter.module.css';
 
 const EmailListItemWrapper = styled.div`
@@ -16,8 +19,20 @@ const EmailListItemWrapper = styled.div`
 `;
 
 function EmailListItem({ email }) {
+    const dispatch = useDispatch();
     const date = new Date(email.date);
     const dateStr = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().substring(1, 3)}`;
+
+    const handleCheckboxChange = (e) => {
+        const isChecked = e.target.checked;
+        if (isChecked) {
+            dispatch(select({ emailId: email.id }))
+        } else {
+            dispatch(deselect({ emailId: email.id }))
+        }
+    }
+
+    //TODO: change to styled components
     return (
         <EmailListItemWrapper>
             <div style={{ width: '20px', height: '20px', padding: '0 10px 0 14px', display: 'flex', alignItems: 'center' }}>
@@ -27,6 +42,7 @@ function EmailListItem({ email }) {
                     inputProps={{ 'aria-label': 'checkbox with default color' }}
                     size="small"
                     style={{ padding: '0'}}
+                    onChange={handleCheckboxChange}
                 />
             </div>
             {/* <div style={{ width: '20px', paddingRight: '10px' }}> */}
