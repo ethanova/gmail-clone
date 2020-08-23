@@ -23,23 +23,19 @@ export const emailSlice = createSlice({
     deselect: (state, action) => {
       state[action.payload.emailId].selected = false;
     },
-    // increment: state => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.value += 1;
-    // },
-    // decrement: state => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // },
+    addLabelToSelectedActions: (state, action) => {
+      //TODO: figure out how this Immer stuff works to do this in a better way. Also prevent duplicate tags
+      const emailProxies = Object.entries(state);
+      emailProxies.forEach(proxy => {
+        if (proxy[1].selected) {
+          proxy[1].tags.push(action.payload.label);
+        }
+      });
+    }
   },
 });
 
-export const { select, deselect } = emailSlice.actions;
+export const { select, deselect, addLabelToSelectedActions } = emailSlice.actions;
 
 //TODO: implement reselect
 export const getEmails = state => Object.keys(state.emails).map(emailId => state.emails[emailId]);

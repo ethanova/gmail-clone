@@ -16,6 +16,7 @@ import LabelIcon from '@material-ui/icons/Label';
 
 import {
     anyEmailSelected,
+    addLabelToSelectedActions,
 } from '../emailList/emailSlice';
 // import styles from './Counter.module.css';
 
@@ -51,6 +52,11 @@ function DefaultActions() {
 }
 
 function EmailActions() {
+    const dispatch = useDispatch();
+    const promptUserForLabel = () => {
+        const newLabel = window.prompt("What label would you like to add?");
+        dispatch(addLabelToSelectedActions({ label: newLabel }));
+    }
     return (
         <>
             <CheckBoxButton />
@@ -65,7 +71,7 @@ function EmailActions() {
                 <PlaylistAddCheckIcon />
             </div>
             <FolderIcon />
-            <LabelIcon />
+            <button onClick={promptUserForLabel}><LabelIcon /></button>
             <MoreVertIcon />
         </>
     )
