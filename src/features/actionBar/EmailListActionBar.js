@@ -17,6 +17,7 @@ import LabelIcon from '@material-ui/icons/Label';
 import {
     anyEmailSelected,
     addLabelToSelectedActions,
+    toggleSelectedEmailsReadStatus,
 } from '../emailList/emailSlice';
 // import styles from './Counter.module.css';
 
@@ -57,6 +58,7 @@ function EmailActions() {
         const newLabel = window.prompt("What label would you like to add?");
         dispatch(addLabelToSelectedActions({ label: newLabel }));
     }
+    const handleReadStatusBtnClick = () => dispatch(toggleSelectedEmailsReadStatus());
     return (
         <>
             <CheckBoxButton />
@@ -66,7 +68,7 @@ function EmailActions() {
                 <DeleteIcon />
             </div>
             <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <DraftsIcon />
+                <button onClick={handleReadStatusBtnClick}><DraftsIcon /></button>
                 <WatchLaterIcon />
                 <PlaylistAddCheckIcon />
             </div>

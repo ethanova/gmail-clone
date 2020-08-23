@@ -31,11 +31,20 @@ export const emailSlice = createSlice({
           proxy[1].tags.push(action.payload.label);
         }
       });
+    },
+    toggleSelectedEmailsReadStatus: (state, action) => {
+      //TODO: figure out how this Immer stuff works to do this in a better way
+      const emailProxies = Object.entries(state);
+      emailProxies.forEach(proxy => {
+        if (proxy[1].selected) {
+          proxy[1].read = !proxy[1].read;
+        }
+      });
     }
   },
 });
 
-export const { select, deselect, addLabelToSelectedActions } = emailSlice.actions;
+export const { select, deselect, addLabelToSelectedActions, toggleSelectedEmailsReadStatus } = emailSlice.actions;
 
 //TODO: implement reselect
 export const getEmails = state => Object.keys(state.emails).map(emailId => state.emails[emailId]);
