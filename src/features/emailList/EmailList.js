@@ -35,7 +35,7 @@ function Tag(props) {
 function EmailListItem({ email }) {
     const dispatch = useDispatch();
     const date = new Date(email.date);
-    const dateStr = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().substring(1, 3)}`;
+    const dateStr = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear().toString().substring(2, 4)}`;
 
     const handleCheckboxChange = (e) => {
         const isChecked = e.target.checked;
