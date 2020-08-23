@@ -67,7 +67,7 @@ function EmailActions() {
                 <DeleteIcon style={{ color: 'grey' }} />
             </div>
             <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <button onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
+                <button data-testid="toggle-unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
                 <WatchLaterIcon style={{ color: 'grey' }} />
                 <PlaylistAddCheckIcon style={{ color: 'grey' }} />
             </div>
@@ -84,7 +84,7 @@ export function EmailListActionBar() {
 //   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
-    <EmailListActionBarWrapper>
+    <EmailListActionBarWrapper data-testid="email-list-action-bar">
         { showEmailActions ? <EmailActions /> : <DefaultActions /> }
     </EmailListActionBarWrapper>
   );

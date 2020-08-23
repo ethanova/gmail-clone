@@ -51,6 +51,7 @@ function EmailListItem({ email }) {
         <EmailListItemWrapper read={email.read} selected={email.selected}>
             <div style={{ width: '20px', height: '20px', padding: '0 10px 0 14px', display: 'flex', alignItems: 'center' }}>
                 <Checkbox
+                    data-testid={`email-${email.id}-checkbox`}
                     checked={email.selected}
                     color="default"
                     inputProps={{ 'aria-label': 'checkbox with default color' }}
@@ -86,7 +87,7 @@ export function EmailList() {
 //   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
-    <EmailListWrapper>
+    <EmailListWrapper data-testid="email-list">
         {emails.map(email => <EmailListItem key={email.id} email={email} />)}
     </EmailListWrapper>
   );
