@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Checkbox } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
@@ -19,7 +19,6 @@ import {
     addLabelToSelectedActions,
     toggleSelectedEmailsReadStatus,
 } from '../emailList/emailSlice';
-// import styles from './Counter.module.css';
 
 const EmailListActionBarWrapper = styled.div`
     width: 100%;

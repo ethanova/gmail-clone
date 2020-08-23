@@ -13,3 +13,7 @@ test('renders learn react link', () => {
 
   expect(getByText(/learn/i)).toBeInTheDocument();
 });
+
+test('renders action icons when an email is selected', () => {
+  
+});

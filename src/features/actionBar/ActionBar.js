@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
-// import {
-//     anyEmailSelected,
-// } from './emailSlice';
 import { EmailListActionBar } from './EmailListActionBar';
-// import styles from './Counter.module.css';
 
 const ActionBarWrapper = styled.div`
     width: 100%;

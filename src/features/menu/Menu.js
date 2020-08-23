@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 // icons
 import LabelIcon from '@material-ui/icons/Label';
 import InboxIcon from '@material-ui/icons/Inbox';
@@ -59,7 +59,7 @@ export function Menu() {
             <MenuItem><EmailIcon style={{ color: 'grey' }} />&nbsp;All Mail</MenuItem>
             <MenuItem><ReportIcon style={{ color: 'grey' }} />&nbsp;Spam</MenuItem>
             <MenuItem><DeleteIcon style={{ color: 'grey' }} />&nbsp;Trash</MenuItem>
-            {labels.map(label => (<Label>{label}</Label>))}
+            {labels.map(label => (<Label key={label}>{label}</Label>))}
         </FoldersWrapper>
     </MenuWrapper>
   );

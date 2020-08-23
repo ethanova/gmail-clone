@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { Button, Checkbox } from '@material-ui/core';
+import { Checkbox } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import {
@@ -8,8 +8,7 @@ import {
   select,
   deselect
 } from './emailSlice';
-//TODO: cleanup imports
-// import styles from './Counter.module.css';
+//TODO: cleanup imports...everywhere
 
 const EmailListItemWrapper = styled.div`
     display: flex;
@@ -67,7 +66,7 @@ function EmailListItem({ email }) {
                 {email.sender}
             </div>
             <div style={{ flex: '1 1 auto', paddingRight: '10px', textAlign: 'left', display: 'flex' }}>
-                {email.tags.map(tag => <Tag tag={tag} />)} {email.subject}
+                {email.tags.map(tag => <Tag key={tag} tag={tag} />)} {email.subject}
             </div>
             <div style={{ flexBasis: '56px', paddingRight: '16px' }}>
                 {dateStr}
@@ -88,7 +87,7 @@ export function EmailList() {
 
   return (
     <EmailListWrapper>
-        {emails.map(email => <EmailListItem email={email} />)}
+        {emails.map(email => <EmailListItem key={email.id} email={email} />)}
     </EmailListWrapper>
   );
 }
