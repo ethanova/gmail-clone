@@ -4,6 +4,7 @@ import { Counter } from './features/counter/Counter';
 import { Header } from './features/Header/Header';
 import { Menu } from './features/menu/Menu';
 import { EmailList } from './features/emailList/EmailList';
+import { ActionBar } from './features/actionBar/ActionBar';
 import './App.css';
 import emails from './emails';
 
@@ -14,8 +15,11 @@ function App() {
       <Header />
       <div style={{ display: 'flex' }}>
         <Menu />
-        <EmailList />
-        {/* <Email /> */}
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+          <ActionBar />
+          <EmailList />
+          {/* <Email /> */}
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,11 @@ const processedEmailInput = {};
 emails.forEach(email => {
   processedEmailInput[email.id] = {
     ...email,
-    selected: false
+    selected: false,
+    read: false,
+    isDeleted: false, //TODO: implement trash
+    inInbox: true,//TODO: implement archive
+    isSpam: false,//TODO: implement spam
   };
 });
 
@@ -37,6 +41,11 @@ export const emailSlice = createSlice({
 
 export const { select, deselect } = emailSlice.actions;
 
+//TODO: implement reselect
 export const getEmails = state => Object.keys(state.emails).map(emailId => state.emails[emailId]);
+
+export const getSelectedEmails = state => getEmails(state).filter(email => email.selected);
+
+export const anyEmailSelected = state => getSelectedEmails(state).length > 0;
 
 export default emailSlice.reducer;
