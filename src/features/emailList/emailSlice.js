@@ -48,4 +48,20 @@ export const getSelectedEmails = state => getEmails(state).filter(email => email
 
 export const anyEmailSelected = state => getSelectedEmails(state).length > 0;
 
+//TODO: break labels into its own state slice and precompute list from emails json
+export const getLabels = state => {
+  const allEmailsWithLabels = getEmails(state);
+  const labels = [];
+  allEmailsWithLabels.forEach(email => {
+    email.tags.forEach(tag => {
+      if (labels.some(label => label === tag)) {
+        // do nothing, already in list
+      } else {
+        labels.push(tag);
+      }
+    });
+  });
+  return labels;
+}
+
 export default emailSlice.reducer;
