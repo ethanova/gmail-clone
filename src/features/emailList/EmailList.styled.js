@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const EmailListItemWrapper = styled.div`
+export const EmailListItemWrapper = styled.tr`
     display: flex;
     height: 20px;
     padding: 5px 0;
@@ -23,7 +23,7 @@ export const Label = styled.div`
     font-weight: normal;
 `;
 
-export const CheckboxContainer = styled.div`
+export const CheckboxContainer = styled.td`
     width: 20px;
     height: 20px;
     padding: 0 10px 0 14px;
@@ -31,24 +31,24 @@ export const CheckboxContainer = styled.div`
     alignItems: center;
 `;
 
-export const SenderCol = styled.div`
+export const SenderCol = styled.td`
     width: 168px;
     padding-right: 32px;
 `;
 
-export const SubjectCol = styled.div`
+export const SubjectCol = styled.td`
     flex: 1 1 auto;
     padding-right: 10px;
     text-align: left;
     display: flex;
 `;
 
-export const DateCol = styled.div`
+export const DateCol = styled.td`
     flex-basis: 56px;
     padding-right: 16px;
 `;
 
-export const EmailListWrapper = styled.div`
+export const EmailListWrapper = styled.table`
     width: 100%;
     height: 100%;
 `;

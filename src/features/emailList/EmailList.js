@@ -39,7 +39,6 @@ function EmailListItem({ email }) {
     }
   };
 
-  // TODO: change to styled components
   return (
     <EmailListItemWrapper read={email.read} selected={email.selected}>
       <CheckboxContainer>
@@ -53,7 +52,9 @@ function EmailListItem({ email }) {
           onChange={handleCheckboxChange}
         />
       </CheckboxContainer>
-      <StarBorderIcon fontSize="small" style={{ width: '20px', paddingRight: '10px' }} />
+      <td>
+        <StarBorderIcon fontSize="small" style={{ width: '20px', paddingRight: '10px' }} />
+      </td>
       <SenderCol>
         {email.sender}
       </SenderCol>
@@ -71,12 +72,12 @@ function EmailListItem({ email }) {
 
 export default function EmailList() {
   const emails = useSelector(getEmails);
-  //   const dispatch = useDispatch();
-  //   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <EmailListWrapper data-testid="email-list">
-      {emails.map((email) => <EmailListItem key={email.id} email={email} />)}
+      <tbody>
+        {emails.map((email) => <EmailListItem key={email.id} email={email} />)}
+      </tbody>
     </EmailListWrapper>
   );
 }
