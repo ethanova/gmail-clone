@@ -31,6 +31,10 @@ export const CheckboxContainer = styled.td`
     alignItems: center;
 `;
 
+export const StarIconTd = styled.td`
+    display: flex;
+`;
+
 export const SenderCol = styled.td`
     width: 168px;
     padding-right: 32px;

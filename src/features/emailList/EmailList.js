@@ -10,6 +10,7 @@ import {
   SubjectCol,
   DateCol,
   EmailListWrapper,
+  StarIconTd,
 } from './EmailList.styled';
 import {
   getEmails,
@@ -52,9 +53,9 @@ function EmailListItem({ email }) {
           onChange={handleCheckboxChange}
         />
       </CheckboxContainer>
-      <td>
+      <StarIconTd>
         <StarBorderIcon fontSize="small" style={{ width: '20px', paddingRight: '10px' }} />
-      </td>
+      </StarIconTd>
       <SenderCol>
         {email.sender}
       </SenderCol>
