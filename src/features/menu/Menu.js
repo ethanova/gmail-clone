@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 // icons
@@ -12,26 +11,15 @@ import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
 import EmailIcon from '@material-ui/icons/Email';
 import ReportIcon from '@material-ui/icons/Report';
 import DeleteIcon from '@material-ui/icons/Delete';
-
+import {
+  MenuItem,
+  MenuWrapper,
+  FoldersWrapper,
+} from './Menu.styled';
 import {
   getLabels,
 } from '../emailList/emailSlice';
 // import styles from './Counter.module.css';
-
-const MenuWrapper = styled.div`
-    width: 256px;
-    height: 100%;
-`;
-
-const FoldersWrapper = styled.div`
-    text-align: left;
-`;
-
-const MenuItem = styled.a`
-    padding: 0 8px 0 26px;
-    display: flex;
-    margin: 1px 0;
-`;
 
 function Label({ children }) {
   return (

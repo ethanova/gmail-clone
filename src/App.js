@@ -1,9 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
 import Header from './features/Header/Header';
 import Menu from './features/menu/Menu';
 import EmailList from './features/emailList/EmailList';
 import ActionBar from './features/actionBar/ActionBar';
 import './App.css';
+
+const ContentContainer = styled.div`
+  display: 'flex';
+  flexDirection: 'column';
+  width: 100%;
+`;
 
 function App() {
   return (
@@ -11,11 +18,11 @@ function App() {
       <Header />
       <div style={{ display: 'flex' }}>
         <Menu />
-        <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+        <ContentContainer>
           <ActionBar />
           <EmailList />
           {/* <Email /> */}
-        </div>
+        </ContentContainer>
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Checkbox } from '@material-ui/core';
 import { useSelector, useDispatch } from 'react-redux';
 // icons
@@ -15,21 +14,19 @@ import FolderIcon from '@material-ui/icons/Folder';
 import LabelIcon from '@material-ui/icons/Label';
 
 import {
+  EmailListActionBarWrapper,
+  CheckboxContainer,
+  IconGroup,
+} from './EmailListActionBar.styled';
+import {
   anyEmailSelected,
   addLabelToSelectedActions,
   toggleSelectedEmailsReadStatus,
 } from '../emailList/emailSlice';
 
-const EmailListActionBarWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-`;
-
 function CheckBoxButton() {
   return (
-    <div style={{ padding: '0 10px 0 14px' }}>
+    <CheckboxContainer>
       <Checkbox
         checked={false}
         color="default"
@@ -37,7 +34,7 @@ function CheckBoxButton() {
         size="small"
         style={{ padding: '0' }}
       />
-    </div>
+    </CheckboxContainer>
   );
 }
 
@@ -61,16 +58,16 @@ function EmailActions() {
   return (
     <>
       <CheckBoxButton />
-      <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
+      <IconGroup>
         <ArchiveIcon style={{ color: 'grey' }} />
         <ReportIcon style={{ color: 'grey' }} />
         <DeleteIcon style={{ color: 'grey' }} />
-      </div>
-      <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
+      </IconGroup>
+      <IconGroup>
         <button type="button" data-testid="toggle-unread" aria-label="Toggle Unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
         <WatchLaterIcon style={{ color: 'grey' }} />
         <PlaylistAddCheckIcon style={{ color: 'grey' }} />
-      </div>
+      </IconGroup>
       <FolderIcon style={{ color: 'grey' }} />
       <button type="button" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
       <MoreVertIcon style={{ color: 'grey' }} />

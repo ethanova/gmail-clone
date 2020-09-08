@@ -26,22 +26,27 @@
   "eslintConfig": {
     "extends": "airbnb",
     "env": {
-     "browser": true,
-     "jest": true
+      "browser": true,
+      "jest": true
     },
     "rules": {
-     "react/jsx-filename-extension": 0,
-     "react/prop-types": 0,
-     "no-alert": 0,
-     "no-param-reassign": 0,
-     "no-unused-vars": 0,
-     "max-len": ["error", 120, 2, {
-      "ignoreUrls": true,
-      "ignoreComments": false,
-      "ignoreRegExpLiterals": true,
-      "ignoreStrings": true,
-      "ignoreTemplateLiterals": true
-    }]
+      "react/jsx-filename-extension": 0,
+      "react/prop-types": 0,
+      "no-alert": 0,
+      "no-param-reassign": 0,
+      "no-unused-vars": 0,
+      "max-len": [
+        "error",
+        120,
+        2,
+        {
+          "ignoreUrls": true,
+          "ignoreComments": false,
+          "ignoreRegExpLiterals": true,
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true
+        }
+      ]
     }
   },
   "browserslist": {
@@ -58,5 +63,8 @@
   },
   "resolutions": {
     "styled-components": "^5"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.11.1"
   }
 }
