@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "cypress": "^5.1.0",
     "eslint-config-airbnb": "^18.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -17,6 +18,7 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
+    "cypress:open": "cypress open",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint src/**/*.js",
@@ -24,10 +26,14 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "airbnb",
+    "extends": [
+      "airbnb", 
+      "plugin:cypress/recommended"
+    ],
     "env": {
       "browser": true,
-      "jest": true
+      "jest": true,
+      "cypress/globals": true
     },
     "rules": {
       "react/jsx-filename-extension": 0,
@@ -47,7 +53,8 @@
           "ignoreTemplateLiterals": true
         }
       ]
-    }
+    },
+    "plugins": ["cypress"]
   },
   "browserslist": {
     "production": [
@@ -65,6 +72,7 @@
     "styled-components": "^5"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.11.1"
+    "babel-plugin-styled-components": "^1.11.1",
+    "eslint-plugin-cypress": "^2.11.1"
   }
 }

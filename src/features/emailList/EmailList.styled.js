@@ -47,6 +47,10 @@ export const SubjectCol = styled.td`
     display: flex;
 `;
 
+export const Labels = styled.div`
+    display: flex;
+`;
+
 export const DateCol = styled.td`
     flex-basis: 56px;
     padding-right: 16px;

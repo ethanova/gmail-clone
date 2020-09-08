@@ -11,6 +11,7 @@ import {
   DateCol,
   EmailListWrapper,
   StarIconTd,
+  Labels,
 } from './EmailList.styled';
 import {
   getEmails,
@@ -60,7 +61,9 @@ function EmailListItem({ email }) {
         {email.sender}
       </SenderCol>
       <SubjectCol>
-        {email.tags.map((tag) => <Tag key={tag} tag={tag} />)}
+        <Labels className="labels">
+          {email.tags.map((tag) => <Tag key={tag} tag={tag} />)}
+        </Labels>
         {' '}
         {email.subject}
       </SubjectCol>

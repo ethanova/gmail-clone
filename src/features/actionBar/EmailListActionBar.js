@@ -69,7 +69,7 @@ function EmailActions() {
         <PlaylistAddCheckIcon style={{ color: 'grey' }} />
       </IconGroup>
       <FolderIcon style={{ color: 'grey' }} />
-      <button type="button" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
+      <button type="button" data-testid="add-label" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
       <MoreVertIcon style={{ color: 'grey' }} />
     </>
   );

@@ -23,7 +23,7 @@ import {
 
 function Label({ children }) {
   return (
-    <MenuItem>
+    <MenuItem className="label-link">
       <LabelIcon style={{ color: 'grey' }} />
       <span>
         {children}
