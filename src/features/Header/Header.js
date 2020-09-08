@@ -18,7 +18,7 @@ const MenuIcon = styled.div`
     margin: 0 4px;
 `;
 
-export function Header() {
+export default function Header() {
   return (
     <HeaderWrapper>
       <MenuIcon><DehazeIcon /></MenuIcon>

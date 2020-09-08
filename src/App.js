@@ -1,8 +1,8 @@
 import React from 'react';
-import { Header } from './features/Header/Header';
-import { Menu } from './features/menu/Menu';
-import { EmailList } from './features/emailList/EmailList';
-import { ActionBar } from './features/actionBar/ActionBar';
+import Header from './features/Header/Header';
+import Menu from './features/menu/Menu';
+import EmailList from './features/emailList/EmailList';
+import ActionBar from './features/actionBar/ActionBar';
 import './App.css';
 
 function App() {

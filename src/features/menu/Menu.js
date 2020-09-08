@@ -33,34 +33,60 @@ const MenuItem = styled.a`
     margin: 1px 0;
 `;
 
-function Label(props) {
-    return (
-        <MenuItem>
-            <LabelIcon style={{ color: 'grey' }} />
-            <span>&nbsp;{props.children}</span>
-        </MenuItem>
-    )
+function Label({ children }) {
+  return (
+    <MenuItem>
+      <LabelIcon style={{ color: 'grey' }} />
+      <span>
+        {children}
+      </span>
+    </MenuItem>
+  );
 }
 
-export function Menu() {
+export default function Menu() {
   const labels = useSelector(getLabels);
-//   const dispatch = useDispatch();
-//   const [incrementAmount, setIncrementAmount] = useState('2');
+  //   const dispatch = useDispatch();
+  //   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <MenuWrapper>
-        <Button style={{ margin: '10px 0'}} variant="contained">Compose</Button>
-        <FoldersWrapper>
-            <MenuItem><InboxIcon style={{ color: 'grey' }}/>&nbsp;Inbox</MenuItem>
-            <MenuItem><WatchLaterIcon style={{ color: 'grey' }} />&nbsp;Snoozed</MenuItem>
-            <MenuItem><LabelImportantIcon style={{ color: 'grey' }} />&nbsp;Important</MenuItem>
-            <MenuItem><TrendingFlatIcon style={{ color: 'grey' }} />&nbsp;Sent</MenuItem>
-            <MenuItem><InsertDriveFileIcon style={{ color: 'grey' }} />&nbsp;Drafts</MenuItem>
-            <MenuItem><EmailIcon style={{ color: 'grey' }} />&nbsp;All Mail</MenuItem>
-            <MenuItem><ReportIcon style={{ color: 'grey' }} />&nbsp;Spam</MenuItem>
-            <MenuItem><DeleteIcon style={{ color: 'grey' }} />&nbsp;Trash</MenuItem>
-            {labels.map(label => (<Label key={label}>{label}</Label>))}
-        </FoldersWrapper>
+      <Button style={{ margin: '10px 0' }} variant="contained">Compose</Button>
+      <FoldersWrapper>
+        <MenuItem>
+          <InboxIcon style={{ color: 'grey' }} />
+          &nbsp;Inbox
+        </MenuItem>
+        <MenuItem>
+          <WatchLaterIcon style={{ color: 'grey' }} />
+          &nbsp;Snoozed
+        </MenuItem>
+        <MenuItem>
+          <LabelImportantIcon style={{ color: 'grey' }} />
+          &nbsp;Important
+        </MenuItem>
+        <MenuItem>
+          <TrendingFlatIcon style={{ color: 'grey' }} />
+          &nbsp;Sent
+        </MenuItem>
+        <MenuItem>
+          <InsertDriveFileIcon style={{ color: 'grey' }} />
+          &nbsp;Drafts
+        </MenuItem>
+        <MenuItem>
+          <EmailIcon style={{ color: 'grey' }} />
+          &nbsp;All Mail
+        </MenuItem>
+        <MenuItem>
+          <ReportIcon style={{ color: 'grey' }} />
+          &nbsp;Spam
+        </MenuItem>
+        <MenuItem>
+          <DeleteIcon style={{ color: 'grey' }} />
+          &nbsp;Trash
+        </MenuItem>
+        {labels.map((label) => (<Label key={label}>{label}</Label>))}
+      </FoldersWrapper>
     </MenuWrapper>
   );
 }

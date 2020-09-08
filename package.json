@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "eslint-config-airbnb": "^18.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.1",
@@ -18,11 +19,30 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint src/**/*.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "airbnb",
+    "env": {
+     "browser": true,
+     "jest": true
+    },
+    "rules": {
+     "react/jsx-filename-extension": 0,
+     "react/prop-types": 0,
+     "no-alert": 0,
+     "no-param-reassign": 0,
+     "no-unused-vars": 0,
+     "max-len": ["error", 120, 2, {
+      "ignoreUrls": true,
+      "ignoreComments": false,
+      "ignoreRegExpLiterals": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true
+    }]
+    }
   },
   "browserslist": {
     "production": [

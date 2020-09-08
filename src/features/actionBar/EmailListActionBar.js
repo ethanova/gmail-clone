@@ -15,9 +15,9 @@ import FolderIcon from '@material-ui/icons/Folder';
 import LabelIcon from '@material-ui/icons/Label';
 
 import {
-    anyEmailSelected,
-    addLabelToSelectedActions,
-    toggleSelectedEmailsReadStatus,
+  anyEmailSelected,
+  addLabelToSelectedActions,
+  toggleSelectedEmailsReadStatus,
 } from '../emailList/emailSlice';
 
 const EmailListActionBarWrapper = styled.div`
@@ -28,64 +28,64 @@ const EmailListActionBarWrapper = styled.div`
 `;
 
 function CheckBoxButton() {
-    return (
-        <div style={{ padding: '0 10px 0 14px' }}>
-            <Checkbox
-                checked={false}
-                color="default"
-                inputProps={{ 'aria-label': 'checkbox with default color' }}
-                size="small"
-                style={{ padding: '0'}}
-            />
-        </div>
-    );
+  return (
+    <div style={{ padding: '0 10px 0 14px' }}>
+      <Checkbox
+        checked={false}
+        color="default"
+        inputProps={{ 'aria-label': 'checkbox with default color' }}
+        size="small"
+        style={{ padding: '0' }}
+      />
+    </div>
+  );
 }
 
 function DefaultActions() {
-    return (
-        <>
-            <CheckBoxButton />
-            <RefreshIcon style={{ color: 'grey' }} />
-            <MoreVertIcon style={{ color: 'grey' }} />
-        </>
-    );
+  return (
+    <>
+      <CheckBoxButton />
+      <RefreshIcon style={{ color: 'grey' }} />
+      <MoreVertIcon style={{ color: 'grey' }} />
+    </>
+  );
 }
 
 function EmailActions() {
-    const dispatch = useDispatch();
-    const promptUserForLabel = () => {
-        const newLabel = window.prompt("What label would you like to add?");
-        dispatch(addLabelToSelectedActions({ label: newLabel }));
-    }
-    const handleReadStatusBtnClick = () => dispatch(toggleSelectedEmailsReadStatus());
-    return (
-        <>
-            <CheckBoxButton />
-            <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <ArchiveIcon style={{ color: 'grey' }} />
-                <ReportIcon style={{ color: 'grey' }} />
-                <DeleteIcon style={{ color: 'grey' }} />
-            </div>
-            <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
-                <button data-testid="toggle-unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
-                <WatchLaterIcon style={{ color: 'grey' }} />
-                <PlaylistAddCheckIcon style={{ color: 'grey' }} />
-            </div>
-            <FolderIcon style={{ color: 'grey' }} />
-            <button onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
-            <MoreVertIcon style={{ color: 'grey' }} />
-        </>
-    )
+  const dispatch = useDispatch();
+  const promptUserForLabel = () => {
+    const newLabel = window.prompt('What label would you like to add?');
+    dispatch(addLabelToSelectedActions({ label: newLabel }));
+  };
+  const handleReadStatusBtnClick = () => dispatch(toggleSelectedEmailsReadStatus());
+  return (
+    <>
+      <CheckBoxButton />
+      <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
+        <ArchiveIcon style={{ color: 'grey' }} />
+        <ReportIcon style={{ color: 'grey' }} />
+        <DeleteIcon style={{ color: 'grey' }} />
+      </div>
+      <div style={{ borderRight: '1px solid black', paddingRight: '8px', marginRight: '20px' }}>
+        <button type="button" data-testid="toggle-unread" aria-label="Toggle Unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
+        <WatchLaterIcon style={{ color: 'grey' }} />
+        <PlaylistAddCheckIcon style={{ color: 'grey' }} />
+      </div>
+      <FolderIcon style={{ color: 'grey' }} />
+      <button type="button" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
+      <MoreVertIcon style={{ color: 'grey' }} />
+    </>
+  );
 }
 
-export function EmailListActionBar() {
+export default function EmailListActionBar() {
   const showEmailActions = useSelector(anyEmailSelected);
-//   const dispatch = useDispatch();
-//   const [incrementAmount, setIncrementAmount] = useState('2');
+  //   const dispatch = useDispatch();
+  //   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <EmailListActionBarWrapper data-testid="email-list-action-bar">
-        { showEmailActions ? <EmailActions /> : <DefaultActions /> }
+      { showEmailActions ? <EmailActions /> : <DefaultActions /> }
     </EmailListActionBarWrapper>
   );
 }
