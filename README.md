@@ -19,7 +19,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `cypress:open`
 
-**Note: Make sure you have the project running with `npm start` before running cypress tests
+**Note: Make sure you have the project running with `npm start` before running cypress tests**
 
 Launches the JavaScript end-to-end testing utility and allows you to run spec files present in the project.
 
