@@ -41,23 +41,57 @@ export const emailSlice = createSlice({
         }
       });
     },
+    deleteSelectedEmails: (state, action) => {
+      // TODO: figure out how this Immer stuff works to do this in a better way
+      const emailProxies = Object.entries(state);
+      emailProxies.forEach((proxy) => {
+        if (proxy[1].selected) {
+          proxy[1].isDeleted = true;
+          proxy[1].selected = false;
+          proxy[1].inInbox = false;
+          proxy[1].isSpam = false;
+        }
+      });
+    },
+    markSelectedEmailsAsSpam: (state, action) => {
+      // TODO: figure out how this Immer stuff works to do this in a better way
+      const emailProxies = Object.entries(state);
+      emailProxies.forEach((proxy) => {
+        if (proxy[1].selected) {
+          proxy[1].isSpam = true;
+          proxy[1].selected = false;
+          proxy[1].inInbox = false;
+          proxy[1].isDeleted = false;
+        }
+      });
+    },
   },
 });
 
 export const {
-  select, deselect, addLabelToSelectedActions, toggleSelectedEmailsReadStatus,
+  select,
+  deselect,
+  addLabelToSelectedActions,
+  toggleSelectedEmailsReadStatus,
+  deleteSelectedEmails,
+  markSelectedEmailsAsSpam,
 } = emailSlice.actions;
 
-// TODO: implement reselect
-export const getEmails = (state) => Object.keys(state.emails).map((emailId) => state.emails[emailId]);
+// TODO: implement reselect for performance
+export const getAllEmails = (state) => Object.keys(state.emails).map((emailId) => state.emails[emailId]);
 
-export const getSelectedEmails = (state) => getEmails(state).filter((email) => email.selected);
+export const getInboxEmails = (state) => getAllEmails(state).filter((email) => !(email.isDeleted || email.isSpam));
+
+export const getSpamEmails = (state) => getAllEmails(state).filter((email) => email.isSpam);
+
+export const getTrashEmails = (state) => getAllEmails(state).filter((email) => email.isDeleted);
+
+export const getSelectedEmails = (state) => getAllEmails(state).filter((email) => email.selected);
 
 export const anyEmailSelected = (state) => getSelectedEmails(state).length > 0;
 
-// TODO: break labels into its own state slice and precompute list from emails json
 export const getLabels = (state) => {
-  const allEmailsWithLabels = getEmails(state);
+  const allEmailsWithLabels = getAllEmails(state);
   const labels = [];
   allEmailsWithLabels.forEach((email) => {
     email.tags.forEach((tag) => {

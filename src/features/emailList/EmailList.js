@@ -14,10 +14,13 @@ import {
   Labels,
 } from './EmailList.styled';
 import {
-  getEmails,
+  getInboxEmails,
+  getSpamEmails,
+  getTrashEmails,
   select,
   deselect,
 } from './emailSlice';
+import { getRoute, routes } from '../menu/menuSlice';
 
 function Tag({ tag }) {
   return (
@@ -75,7 +78,15 @@ function EmailListItem({ email }) {
 }
 
 export default function EmailList() {
-  const emails = useSelector(getEmails);
+  const route = useSelector(getRoute);
+  // const emails = [];
+  let selector = getInboxEmails;
+  if (route === routes.SPAM) {
+    selector = getSpamEmails;
+  } else if (route === routes.TRASH) {
+    selector = getTrashEmails;
+  }
+  const emails = useSelector(selector);
 
   return (
     <EmailListWrapper data-testid="email-list">

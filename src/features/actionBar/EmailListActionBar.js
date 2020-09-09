@@ -17,11 +17,14 @@ import {
   EmailListActionBarWrapper,
   CheckboxContainer,
   IconGroup,
+  ActionBtn,
 } from './EmailListActionBar.styled';
 import {
   anyEmailSelected,
   addLabelToSelectedActions,
   toggleSelectedEmailsReadStatus,
+  deleteSelectedEmails,
+  markSelectedEmailsAsSpam,
 } from '../emailList/emailSlice';
 
 function CheckBoxButton() {
@@ -55,21 +58,29 @@ function EmailActions() {
     dispatch(addLabelToSelectedActions({ label: newLabel }));
   };
   const handleReadStatusBtnClick = () => dispatch(toggleSelectedEmailsReadStatus());
+  const handleDeleteClick = () => dispatch(deleteSelectedEmails());
+  const handleReportSpamClick = () => dispatch(markSelectedEmailsAsSpam());
   return (
     <>
       <CheckBoxButton />
       <IconGroup>
-        <ArchiveIcon style={{ color: 'grey' }} />
-        <ReportIcon style={{ color: 'grey' }} />
-        <DeleteIcon style={{ color: 'grey' }} />
+        <ActionBtn type="button" aria-label="Archive Email">
+          <ArchiveIcon style={{ color: 'grey' }} />
+        </ActionBtn>
+        <ActionBtn type="button" aria-label="Mark Email as Spam" onClick={handleReportSpamClick}>
+          <ReportIcon style={{ color: 'rgb(100, 100, 100)' }} />
+        </ActionBtn>
+        <ActionBtn type="button" aria-label="Delete Email" onClick={handleDeleteClick}>
+          <DeleteIcon style={{ color: 'rgb(100, 100, 100)' }} />
+        </ActionBtn>
       </IconGroup>
       <IconGroup>
-        <button type="button" data-testid="toggle-unread" aria-label="Toggle Unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'grey' }} /></button>
-        <WatchLaterIcon style={{ color: 'grey' }} />
-        <PlaylistAddCheckIcon style={{ color: 'grey' }} />
+        <ActionBtn type="button" data-testid="toggle-unread" aria-label="Toggle Unread" onClick={handleReadStatusBtnClick}><DraftsIcon style={{ color: 'rgb(100, 100, 100)' }} /></ActionBtn>
+        <ActionBtn type="button" aria-label="Snooze Email"><WatchLaterIcon style={{ color: 'grey' }} /></ActionBtn>
+        <ActionBtn type="button" aria-label="Add Email to List"><PlaylistAddCheckIcon style={{ color: 'grey' }} /></ActionBtn>
       </IconGroup>
-      <FolderIcon style={{ color: 'grey' }} />
-      <button type="button" data-testid="add-label" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'grey' }} /></button>
+      <ActionBtn type="button" aria-label="Move Email to Folder"><FolderIcon style={{ color: 'grey' }} /></ActionBtn>
+      <ActionBtn type="button" data-testid="add-label" aria-label="Add Label" onClick={promptUserForLabel}><LabelIcon style={{ color: 'rgb(100, 100, 100)' }} /></ActionBtn>
       <MoreVertIcon style={{ color: 'grey' }} />
     </>
   );

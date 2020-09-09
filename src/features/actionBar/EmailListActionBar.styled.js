@@ -16,3 +16,9 @@ export const IconGroup = styled.div`
     padding-right: 8px;
     margin-right: 20px;
 `;
+
+export const ActionBtn = styled.button`
+    border: none;
+    background: none;
+    cursor: pointer;
+`;

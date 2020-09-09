@@ -13,4 +13,6 @@ export const MenuItem = styled.a`
     padding: 0 8px 0 26px;
     display: flex;
     margin: 1px 0;
+    cursor: pointer;
+    font-weight: ${({ isCurrentRoute }) => (isCurrentRoute ? 'bold' : 'normal')}
 `;

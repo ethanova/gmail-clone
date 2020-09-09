@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // icons
 import LabelIcon from '@material-ui/icons/Label';
 import InboxIcon from '@material-ui/icons/Inbox';
@@ -19,6 +19,7 @@ import {
 import {
   getLabels,
 } from '../emailList/emailSlice';
+import { goTo, routes, getRoute } from './menuSlice';
 // import styles from './Counter.module.css';
 
 function Label({ children }) {
@@ -26,6 +27,7 @@ function Label({ children }) {
     <MenuItem className="label-link">
       <LabelIcon style={{ color: 'grey' }} />
       <span>
+        &nbsp;
         {children}
       </span>
     </MenuItem>
@@ -34,15 +36,15 @@ function Label({ children }) {
 
 export default function Menu() {
   const labels = useSelector(getLabels);
-  //   const dispatch = useDispatch();
-  //   const [incrementAmount, setIncrementAmount] = useState('2');
+  const currentRoute = useSelector(getRoute);
+  const dispatch = useDispatch();
 
   return (
     <MenuWrapper>
       <Button style={{ margin: '10px 0' }} variant="contained">Compose</Button>
       <FoldersWrapper>
-        <MenuItem>
-          <InboxIcon style={{ color: 'grey' }} />
+        <MenuItem isCurrentRoute={currentRoute === routes.INBOX} onClick={() => dispatch(goTo(routes.INBOX))}>
+          <InboxIcon style={{ color: 'rgb(100, 100, 100)' }} />
           &nbsp;Inbox
         </MenuItem>
         <MenuItem>
@@ -65,12 +67,12 @@ export default function Menu() {
           <EmailIcon style={{ color: 'grey' }} />
           &nbsp;All Mail
         </MenuItem>
-        <MenuItem>
-          <ReportIcon style={{ color: 'grey' }} />
+        <MenuItem isCurrentRoute={currentRoute === routes.SPAM} onClick={() => dispatch(goTo(routes.SPAM))}>
+          <ReportIcon style={{ color: 'rgb(100, 100, 100)' }} />
           &nbsp;Spam
         </MenuItem>
-        <MenuItem>
-          <DeleteIcon style={{ color: 'grey' }} />
+        <MenuItem isCurrentRoute={currentRoute === routes.TRASH} onClick={() => dispatch(goTo(routes.TRASH))}>
+          <DeleteIcon style={{ color: 'rgb(100, 100, 100)' }} />
           &nbsp;Trash
         </MenuItem>
         {labels.map((label) => (<Label key={label}>{label}</Label>))}

@@ -1,11 +1,11 @@
 import * as emailSlice from './emailSlice';
 
-test('getEmails() should return an array of emails instead of the denormalized by ID collection', () => {
+test('getAllEmails() should return an array of emails instead of the denormalized by ID collection', () => {
   const emails = {
     1: { sender: 'Bob', subject: 'Hello world' },
   };
   const state = { emails };
-  const result = emailSlice.getEmails(state);
+  const result = emailSlice.getAllEmails(state);
   expect(result[0].sender).toBe('Bob');
 });
 
