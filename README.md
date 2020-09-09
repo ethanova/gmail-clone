@@ -17,6 +17,12 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `cypress:open`
+
+**Note: Make sure you have the project running with `npm start` before running cypress tests
+
+Launches the JavaScript end-to-end testing utility and allows you to run spec files present in the project.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.<br />

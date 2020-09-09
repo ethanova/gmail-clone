@@ -42,4 +42,19 @@ describe('Email Actions', () => {
     });
     cy.get('.label-link').contains(testLabelInput).should('exist');
   });
+
+  it('Deletes an email and removes it from the inbox list and shows it in the deleted list', () => {
+    cy.visit('http://localhost:3000');
+
+    cy.get(`${emailListTableSelector} input[type="checkbox"]`).first().click();
+    cy.get(`${emailListTableSelector} tr`).should('have.length', 10);
+    cy.get('button[aria-label="Delete Email"]').first().click();
+    cy.get(`${emailListTableSelector} tr`).should('have.length', 9);
+
+    cy.get('a').contains('Trash').click();
+    cy.get(`${emailListTableSelector} tr`).should('have.length', 1);
+
+    cy.get('a').contains('Inbox').click();
+    cy.get(`${emailListTableSelector} tr`).should('have.length', 9);
+  });
 });
